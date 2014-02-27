@@ -20,7 +20,9 @@ Flags
 
 Clean
 
+```bash
 ./run -c
+```
 
 Create empty bot class
 
