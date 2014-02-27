@@ -26,18 +26,33 @@ Clean
 
 Create empty bot class
 
+```bash
 ./run -n TestBot	// Two files named TestBot.h and TestBot.cpp will be created
+```
 
-Set Players to default
+Set Players to default (Default players are SampleBot and SampleMirror. Do not delete them)
 
-./run -d	// Default players are SampleBot and SampleMirror. Do not delete them
+```bash
+./run -d
+```
 
-Build and Run the game
+Build and Run the game (Will build and Run the game with default players and map)
 
-./run	// Will build and Run the game with default players and map
+```bash
+./run
+```
 
 Run Game with specific map and players
 
-./run -map 1	// Start the game in map 1
-./run -map 1 TestBot	// Start the game in map 1 between SampleBot (given) and TestBot. TestBot will be player 2
-./run -map 1 TestBot AnotherBot	// Start the game in map 1 between TestBot and AnotherBot
+- Start the game in map 1
+```bash
+./run -map 1
+```
+- Start the game in map 1 between SampleBot (given) and TestBot. TestBot will be player 2
+```bash
+./run -map 1 TestBot
+```
+- Start the game in map 1 between TestBot and AnotherBot
+```bash
+./run -map 1 TestBot AnotherBot
+```
