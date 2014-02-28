@@ -12,7 +12,12 @@ cd player2;
 rm player2;
 g++ *.cpp -o player2;
 cd ..;
-chmod 777 tester;
-./tester "./host/snake ./host/arena/1" "./player1/player1" "./player2/player2";
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	chmod 777 tester_osx;
+    ./tester_osx "./host/snake ./host/arena/1" "./player1/player1" "./player2/player2";
+else
+	chmod 777 tester;
+    ./tester "./host/snake ./host/arena/1" "./player1/player1" "./player2/player2";
+fi
 echo "Game descriptor generated in host/simulation/input.txt";
 echo "Run Snake.swf with any Shockwave Player or Google Chrome";
