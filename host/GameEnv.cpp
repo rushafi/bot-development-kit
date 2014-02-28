@@ -260,7 +260,7 @@ void GameEnv::start() {
 
     do {
 
-        arena->drawArena();
+        // arena->drawArena();
         turnsRem--; // another turn finished
 
         pair<_pii,_pii> bot1Bound = bot1->getBound();
