@@ -367,8 +367,8 @@ void GameEnv::start() {
             p1FinalLength = bot1->getLength() - 1;
             p2FinalLength = bot2->getLength() - 1;
 
-						p1FinalStatus = OPP_HEAD_HIT;
-						p2FinalStatus = OPP_HEAD_HIT;
+			p1FinalStatus = OPP_HEAD_HIT;
+			p2FinalStatus = OPP_HEAD_HIT;
             gameStatus = getWinningStatus(p1FinalLength, p2FinalLength);
         }
         else {
@@ -393,9 +393,9 @@ void GameEnv::start() {
 
                 // Check whether length falls to zero, if then die
                 if(bot1->getLength() == 0) {
-									isP1Alive = false;
-									p1FinalStatus = LENGTH_ZERO;
-								}
+					isP1Alive = false;
+					p1FinalStatus = LENGTH_ZERO;
+				}
             }
             else {
                 // Snake will move one step
@@ -423,9 +423,9 @@ void GameEnv::start() {
 
                 // Check whether length falls to zero, if then die
                 if(bot2->getLength() == 0) {
-									isP2Alive = false;
-									p2FinalStatus = LENGTH_ZERO;
-								}
+					isP2Alive = false;
+					p2FinalStatus = LENGTH_ZERO;
+				}
             }
             else {
                 // Snake will move one step
@@ -441,21 +441,21 @@ void GameEnv::start() {
                 // need to reduce length by one
                 p1FinalLength = bot1->getLength() - 1;
                 isP1Alive = false;
-								p1FinalStatus = WALL_HIT;
+				p1FinalStatus = WALL_HIT;
             }
             else if(arena->getArenaDescriptor(bot1->getHeadPos()) == 'O') {
                 // Did hit opponents body, snake is dead
                 // need to reduce length by one
                 p1FinalLength = bot1->getLength() - 1;
                 isP1Alive = false;
-								p1FinalStatus = OPP_HIT;
+				p1FinalStatus = OPP_HIT;
             }
             else if(arena->getArenaDescriptor(bot1->getHeadPos()) == 'S') {
                 // Did hit own body, snake is dead
                 // need to reduce length by one
                 p1FinalLength = bot1->getLength() - 1;
                 isP1Alive = false;
-								p1FinalStatus = SELF_HIT;
+				p1FinalStatus = SELF_HIT;
             }
             else {
                 // No collision occured
@@ -469,21 +469,21 @@ void GameEnv::start() {
                 // need to reduce length by one
                 p2FinalLength = bot2->getLength() - 1;
                 isP2Alive = false;
-								p2FinalStatus = WALL_HIT;
+				p2FinalStatus = WALL_HIT;
             }
             else if(arena->getArenaDescriptor(bot2->getHeadPos()) == 'O') {
                 // Did hit own body, snake is dead
                 // need to reduce length by one
                 p2FinalLength = bot2->getLength() - 1;
                 isP2Alive = false;
-								p2FinalStatus = SELF_HIT;
+				p2FinalStatus = SELF_HIT;
             }
             else if(arena->getArenaDescriptor(bot2->getHeadPos()) == 'S') {
                 // Did hit opponent body, snake is dead
                 // need to reduce length by two
                 p2FinalLength = bot2->getLength() - 1;
                 isP2Alive = false;
-								p2FinalStatus = OPP_HIT;
+				p2FinalStatus = OPP_HIT;
             }
             else {
                 // No collision occured
@@ -521,14 +521,15 @@ void GameEnv::start() {
     // p1FinalLength holds final length of Player1
     // p2FinalLength holds final length of Player2
 
-    arena->drawArena();
+    // arena->drawArena();
 
     // need to send a signal to shut down the bots
 
     // fprintf(fd3, "%d\n", -1);
     // fprintf(fd5, "%d\n", -1);
 
-    printGameResult();
+    // printGameResult();
+
     fprintf(gameDescritorFp, "1 %d %d\n", p1FinalLength, p2FinalLength);
     fprintf(gameDescritorFp, "%d %d %d\n", gameStatus, p1FinalStatus, p2FinalStatus);
 }
