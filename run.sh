@@ -13,4 +13,5 @@ rm player2;
 g++ *.cpp -o player2;
 cd ..;
 chmod 777 tester;
-./tester "./host/snake ./host/arena/2" "./player1/player1" "./player2/player2";
+./tester "./host/snake ./host/arena/1" "./player1/player1" "./player2/player2";
+echo "Game descriptor generated in host/simulation/input.txt. Run Snake.swf with any Shockwave Player (Google Chrome or Firefox should do as well).
