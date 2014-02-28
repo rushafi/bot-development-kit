@@ -20,4 +20,4 @@ else
     ./tester "./host/snake ./host/arena/1" "./player1/player1" "./player2/player2";
 fi
 echo "Game descriptor generated in host/simulation/input.txt";
-echo "Run Snake.swf with any Shockwave Player or Google Chrome";
+echo "Run host/simulation/Snake.swf with any Shockwave Player or Google Chrome";

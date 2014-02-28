@@ -1,11 +1,12 @@
 ### Supported Platforms
 
-- Linux
+- Linux (64 bit only, for now)
 - Mac OSX
 
 ### Prerequisite
 
 - GNU GCC compiler (g++)
+- will fail with only one warning if g++ is not present
 
 ### How to Run
 
