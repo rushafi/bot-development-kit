@@ -46,8 +46,9 @@ GameEnv::GameEnv() {
     remPosCollectibles = arena->getCollectiblesCount().first;
     remNegCollectibles = arena->getCollectiblesCount().second;
 
-		p1FinalStatus = NO_HIT;
-		p2FinalStatus = NO_HIT;
+	p1FinalStatus = NO_HIT;
+	p2FinalStatus = NO_HIT;
+
     gameStatus = STATUS_NOT_STARTED;
 
     turnsRem = arena->getMaxTurn();
@@ -87,8 +88,9 @@ GameEnv::GameEnv(const char *arenaDescritor, const char *gameDescriptor) {
     remPosCollectibles = arena->getCollectiblesCount().first;
     remNegCollectibles = arena->getCollectiblesCount().second;
 
-		p1FinalStatus = NO_HIT;
-		p2FinalStatus = NO_HIT;
+	p1FinalStatus = NO_HIT;
+	p2FinalStatus = NO_HIT;
+
     gameStatus = STATUS_NOT_STARTED;
 
     turnsRem = arena->getMaxTurn();
@@ -130,21 +132,21 @@ void GameEnv::start() {
         vector<string> p2Surroundings = arena->getDescription(bot2Bound, 1,
                 bot2->getHeadPos(), bot1->getHeadPos(), bot2->getSnakeBody());
 
-				time_t p1Start, p1End, p2Start, p2End, p1Diff, p2Diff;
-				
-				p1Start = time(NULL);
-				int p1direction = players[0]->getNextMove(p1Surroundings);
+		time_t p1Start, p1End, p2Start, p2End, p1Diff, p2Diff;
+		
+		p1Start = time(NULL);
+		int p1direction = players[0]->getNextMove(p1Surroundings);
         p1End = time(NULL);
 
-				p1Diff = difftime(p1Start, p1End);
-				bot1->updateTime(p1Diff);
-				
-				p2Start = time(NULL);
-				int p2direction = players[1]->getNextMove(p2Surroundings);
-				p2End = time(NULL);
-				
-				p2Diff = difftime(p2Start, p2End);
-				bot2->updateTime(p2Diff);
+		p1Diff = difftime(p1Start, p1End);
+		bot1->updateTime(p1Diff);
+		
+		p2Start = time(NULL);
+		int p2direction = players[1]->getNextMove(p2Surroundings);
+		p2End = time(NULL);
+		
+		p2Diff = difftime(p2Start, p2End);
+		bot2->updateTime(p2Diff);
 				
         /* Prevent player from going exactly opposite of its direction when
          * length is greater than 1. It is because when length is greater than 1
@@ -180,8 +182,9 @@ void GameEnv::start() {
             p1FinalLength = bot1->getLength() - 1;
             p2FinalLength = bot2->getLength() - 1;
 
-						p1FinalStatus = OPP_HEAD_HIT;
-						p2FinalStatus = OPP_HEAD_HIT;
+			p1FinalStatus = OPP_HEAD_HIT;
+			p2FinalStatus = OPP_HEAD_HIT;
+
             gameStatus = getWinningStatus(p1FinalLength, p2FinalLength);
         }
         else {
@@ -236,9 +239,9 @@ void GameEnv::start() {
 
                 // Check whether length falls to zero, if then die
                 if(bot2->getLength() == 0) {
-									isP2Alive = false;
-									p2FinalStatus = LENGTH_ZERO;
-								}
+					isP2Alive = false;
+					p2FinalStatus = LENGTH_ZERO;
+				}
             }
             else {
                 // Snake will move one step
@@ -335,7 +338,9 @@ void GameEnv::start() {
     // p2FinalLength holds final length of Player2
 
     // arena->drawArena();
+    
     printGameResult();
+
     fprintf(gameDescritorFp, "1 %d %d\n", p1FinalLength, p2FinalLength);
     fprintf(gameDescritorFp, "%d %d %d\n", gameStatus, p1FinalStatus, p2FinalStatus);
 }
@@ -385,30 +390,30 @@ void GameEnv::printfPlayerStatus(int n) {
 }
 
 void GameEnv::printGameResult() {
-		printf("\nResult: ");
+	printf("\nResult: ");
     if(gameStatus == STATUS_GAME_TIED) printf("Game Tied\n");
     else if(gameStatus == STATUS_PLAYER1_WON) printf("Player 1 won\n");
     else if(gameStatus == STATUS_PLAYER2_WON) printf("Player 2 won\n");
     else printf("Game Status Unknown\n");
 
     printf("Remaining turns: %d\n", turnsRem);
-		printf("\n");
+	printf("\n");
 
-		printf("P1 Stat\n");
-		printf("Final Length: %d\n", p1FinalLength);
-		printf("Avg time per move: %.6lf\n", bot1->getAverageTime());
-		printf("Max time in any move: %.6lf\n", bot1->getMaxTime());
-		printf("Min time in any move: %.6lf\n", bot1->getMinTime());
-		printfPlayerStatus(p1FinalStatus);
-		printf("\n");
-		
-		printf("P2 Stat\n");
-		printf("Final Length: %d\n", p2FinalLength);
-		printf("Avg time per move: %.6lf\n", bot2->getAverageTime());
-		printf("Max time in any move: %.6lf\n", bot2->getMaxTime());
-		printf("Min time in any move: %.6lf\n", bot2->getMinTime());
-		printfPlayerStatus(p2FinalStatus);
-		printf("\n");
+	printf("P1 Stat\n");
+	printf("Final Length: %d\n", p1FinalLength);
+	printf("Avg time per move: %.6lf\n", bot1->getAverageTime());
+	printf("Max time in any move: %.6lf\n", bot1->getMaxTime());
+	printf("Min time in any move: %.6lf\n", bot1->getMinTime());
+	printfPlayerStatus(p1FinalStatus);
+	printf("\n");
+	
+	printf("P2 Stat\n");
+	printf("Final Length: %d\n", p2FinalLength);
+	printf("Avg time per move: %.6lf\n", bot2->getAverageTime());
+	printf("Max time in any move: %.6lf\n", bot2->getMaxTime());
+	printf("Min time in any move: %.6lf\n", bot2->getMinTime());
+	printfPlayerStatus(p2FinalStatus);
+	printf("\n");
 		
     printf("GAME ENDS HERE\n");
 }
